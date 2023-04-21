@@ -1,0 +1,327 @@
+/* GENERALI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    height: 130px;
+    background-color: rgb(0, 150, 136);
+}
+
+main {
+    background-color: rgb(218, 219, 211);
+    height: 100vh;
+    padding: 0 30px;
+}
+
+/* WRAPPER */
+#wrapper {
+    display: flex;
+    height: calc(100vh - 100px);
+    max-width: 1400px;
+    margin: 0 auto;
+    border: 1px solid grey;
+    position: relative;
+    bottom: 100px;
+}
+
+/* sezione contatti */
+.contatti {
+    width: 400px;
+    border-right: 1px solid rgb(185, 185, 185);
+}
+
+/* barra contatti */
+.bar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(234, 234, 234);
+}
+
+.bar.top {
+    justify-content: space-between;
+}
+
+.bar_profile_pic {
+    display: flex;
+    align-items: center;
+}
+
+.avatar_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;  
+}
+
+.avatar_img.user {
+    margin-right: 5px;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    color: rgb(101, 101, 101);
+    font-size: 20px;
+}
+
+.icons.top {
+    width: 100px;
+}
+
+/* attiva notifiche */
+#notifiche {
+    display: flex;
+    align-items: center;
+    background-color: rgb(142, 218, 252);
+    padding: 15px 25px;
+}
+
+#bell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    color: rgb(142, 218, 252);
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+#attiva_notifiche {
+    color: rgb(105, 105, 105);
+}
+
+/* barra di ricerca chat */
+#search_bar {
+    display: flex;
+    padding: 5px;
+    background-color: rgb(250, 250, 250);
+    height: 45px;
+}
+
+#magnifyng_glass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border: 1px solid rgb(225, 225, 225);
+    color: rgb(185, 185, 185);
+}
+
+.user_input {
+    width: 80%;
+    border: 1px solid rgb(225, 225, 225);
+    padding-left: 10px;
+}
+
+/* lista chat */
+#lista_chat {
+    height: calc(100% - 195px);
+    overflow-y: auto;
+    background-color: #fff;
+    border-top: 1px solid rgb(185, 185, 185);
+}
+
+.chat {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid rgb(225, 225, 225);
+    position: relative;
+}
+
+.chat:hover {
+    background-color: rgb(233, 235, 235);
+    cursor: pointer;
+}
+
+.last_mex {
+    font-size: 12px;
+    color: grey;
+}
+
+.last_mex_date {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 10px;
+    color: grey;
+}
+
+.selected {
+    background-color: rgb(214, 214, 214);
+}
+
+/* sezione chat */
+.chat_section {
+    flex-grow: 1;
+}
+
+/* chat bar */
+.avatar_img.contact {
+    margin-right: 15px;
+}
+
+.back {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: grey;
+    cursor: pointer;
+}
+
+/* contenuto chat */
+.chat_content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 140px);
+    background-image: url(../img/mine.jpg);
+    overflow-y: auto;
+    padding: 20px 50px;
+}
+
+.start {
+    height: calc(100% - 70px); 
+}
+
+.message {
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.sent {
+    background-color: rgb(213, 249, 186);
+    align-self: flex-end;
+}
+
+.received {
+    background-color: #fff;
+}
+
+.mex {
+    margin-bottom: 5px;
+}
+.date {
+    font-size: 10px;
+    position: absolute;
+    right: 5px;
+    bottom: 2px;
+    text-align: end;
+}
+
+/* sendbar */
+.user_input.send {
+    height: 50px;
+}
+
+.icons.bottom {
+    width: 10%;
+}
+
+/* RESPONSIVE */
+
+/* tablet version */
+@media screen and (max-width: 1060px) {
+
+    .contatti {
+        width: 200px;
+    }
+
+    #wrapper {
+        max-width: 1600px;   
+    }
+
+    #notifiche {
+        display: none;
+    }
+
+    #lista_chat {
+        height: calc(100% - 115px);
+    }
+
+    .message {
+        width: 200px;
+    }
+
+}
+
+@media screen and (max-width: 760px) {
+
+    .icons.top {
+        width: 50px;
+        font-size: 15px;
+    }
+
+    .chat_content {
+        padding: 20px 10px;
+    }
+
+    .message {
+        width: 150px;
+    }
+
+}
+
+/* smartphone version */
+
+@media screen and (max-width: 590px) {
+
+    .contatti {
+        width: 100%;
+    }
+
+    .icons.top {
+        display: none;
+    }
+
+    .back {
+        display: flex;
+    }
+
+    .chat_content {
+        height: calc(100% - 140px);  
+    }
+
+    .start {
+        height: calc(100% - 70px);
+    }
+  
+    .message {
+        width: 100px;
+    }
+
+    .active {
+        display: block;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .mex {
+        margin-bottom: 20px
+    }
+}
+
+@media screen and (max-width: 360px) {
+
+    .chat_content {
+        height: calc(100% - 156px);  
+    }
+    
+}

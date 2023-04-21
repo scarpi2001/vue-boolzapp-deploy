@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Boolzapp</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <header></header>
+
+        <main>
+
+            <!-- WRAPPER -->
+            <div id="wrapper">
+
+                <!-- sezione contatti -->
+                <section class="contatti" :class="isActive ? 'hidden' : 'active' ">
+
+                    <!-- contatti bar -->
+                    <div class="bar top">
+
+                        <div class="bar_profile_pic">
+                            <img class="avatar_img user" src="img/user.jpg">
+                            <h4>User</h4>
+                        </div>
+
+                        <div class="icons top">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- attiva notifiche -->
+                    <div id="notifiche">
+
+                        <div id="bell">
+                            <i class="fa-solid fa-bell-slash"></i>
+                        </div>
+
+                        <div class="text">
+                            <div>Ricevi notifiche messaggio</div>
+                            <a id="attiva_notifiche" href="#">Attiva notifiche desktop</a>
+                        </div>
+
+                    </div>
+
+                    <!-- barra di ricerca chat -->
+                    <div id="search_bar">
+
+                        <div id="magnifyng_glass" for="search_bar">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <input class="user_input" type="text" placeholder="cerca o inizia una nuova chat"
+                            v-model="newSearch"
+                        >
+
+                    </div>
+
+                    <!-- lista chat -->
+                    <div id="lista_chat">
+
+                        <div class="chat" 
+                            v-for="(contact,index) in ricerca"
+                            :class=" index === active ? 'selected' : '' " 
+                            @click="currentChat(index)"
+                        >
+                            <img class="avatar_img contact" :src="contact.image" :alt="contact.name">
+
+                            <div class="text">
+                                <h4>{{contact.name}}</h4>
+                                <span class="last_mex">{{contact.messages[contact.messages.length - 1].message}}</span>
+                                <span class="last_mex_date">{{contact.messages[contact.messages.length -
+                                    1].date}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+
+                <!-- sezione chat -->
+                <section class="chat_section" :class=" isActive ? 'active' : 'hidden' ">
+
+                    <!-- chat topbar -->
+                    <div class="bar top">
+
+                        <div class="bar_profile_pic">
+                            <img class="avatar_img contact" :src="contacts[active].image" :alt="contacts[active].name">
+
+                            <div class="text">
+                                <h4>{{contacts[active].name}}</h4>
+                                <span>{{contacts[active].lastSeen}}</span>
+                            </div>
+                        </div>
+
+                        <div class="icons top">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+
+                        <div class="back" @click="back">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </div>
+
+                    </div>
+
+                    <!-- contenuto chat -->
+                    <div class="chat_content" :class="active === 0 ? 'start' : '' ">
+
+                        <div class="message" 
+                            v-for="mex in contacts[active].messages"
+                            :class="mex.status === 'sent' ? 'sent' : 'received' "
+                        >
+                            <div class="mex">{{mex.message}}</div>
+                            <span class="date">{{mex.date}}</span>
+                        </div>
+
+                    </div>
+
+                    <!-- sendbar -->
+                    <div class="bar" v-show="active > 0">
+
+                        <div class="icons bottom">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </div>
+
+                        <input class="user_input send" type="text" placeholder="Scrivi un messaggio"
+                            @KeyUp.enter="send(active)" v-model="newMessage">
+
+                        <div class="icons bottom">
+                            <i v-show="newMessage" class="fa-solid fa-paper-plane" @click="send(active)">
+                            </i>
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </main>
+
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
